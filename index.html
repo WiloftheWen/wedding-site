@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>John & Jane Wedding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #fffaf7;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-direction: column;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.5rem;
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .details, .countdown {
+      font-size: 1.2rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+
+    .rsvp input, .rsvp textarea {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #d4a373;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 20px;
+      background: #f1e3d3;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<header>
+  <h1>John & Jane</h1>
+  <p>We're Getting Married</p>
+  <p>December 25, 2026</p>
+</header>
+
+<!-- DETAILS -->
+<section>
+  <h2>Wedding Details</h2>
+  <div class="details">
+    <p><strong>Church:</strong> St. Mary's Cathedral</p>
+    <p><strong>Reception:</strong> Grand Ballroom</p>
+    <p><strong>Time:</strong> 3:00 PM</p>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section>
+  <h2>Countdown</h2>
+  <div class="countdown" id="countdown"></div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <h2>Our Moments</h2>
+  <div class="gallery">
+    <img src="https://source.unsplash.com/300x300/?couple" />
+    <img src="https://source.unsplash.com/300x300/?wedding" />
+    <img src="https://source.unsplash.com/300x300/?love" />
+  </div>
+</section>
+
+<!-- RSVP -->
+<section>
+  <h2>RSVP</h2>
+  <div class="rsvp">
+    <input type="text" placeholder="Your Name"><br>
+    <textarea placeholder="Message"></textarea><br>
+    <button onclick="alert('RSVP Submitted!')">Submit</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>With Love ?? John & Jane</p>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+  const weddingDate = new Date("Dec 25, 2026 15:00:00").getTime();
+
+  const timer = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    document.getElementById("countdown").innerHTML =
+      days + " days to go ??";
+
+    if (distance < 0) {
+      clearInterval(timer);
+      document.getElementById("countdown").innerHTML = "We are married!";
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>
